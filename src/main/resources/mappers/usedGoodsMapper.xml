@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 해당 xml 에서 사용할 규칙을 지정 dtd
+	mybatis 의 dtd 를 불러오는것.  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <!--  특정 repository interface 와 연결 설정 -->
+ <mapper namespace="com.ds04011.SpringExample.database.repository.UsedGoodsRepository">
+ 	<!--   연결된 리포지토리의 특정 메소드에 대한 구현 (쿼리문 구현) -->
+ 	<select id="selectUsedGoodsList" resultType="com.ds04011.SpringExample.database.domain.UsedGoods">
+ 		SELECT  
+ 		`id`
+ 		, `sellerId`
+ 		, `title`
+ 		, `price`
+ 		, `description`
+ 		, `image`
+ 		, `createdAt`
+ 		, `updatedAt`
+ 		FROM 
+ 		`used_goods`
+ 	</select>
+ </mapper>
+ 
