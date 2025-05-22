@@ -3,7 +3,9 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.ds04011.SpringExample.review.repository.ReviewRepository" >
- 	<select id="selectReview" resultType="com.ds04011.SpringExample.review.domain.Review">
+ 	<select id="selectReview" 
+ 	resultType="com.ds04011.SpringExample.review.domain.Review"
+ 	parameterType="int">
  		SELECT 
 	 		`id`
 	 		, `storeId`
@@ -18,5 +20,48 @@
  		Where 
  			`id`= #{id}   
  	</select>
+ 	
+ 	<insert id="insertReview"
+ 	parameterType ="map">
+ 		Insert into `new_review`
+ 		(
+ 			`storeId`
+	 		, `menu`
+	 		, `userName`
+	 		, `point`
+	 		, `review`
+	 		
+	 	)
+	 	Value
+	 	(
+	 		#{storeId}
+	 		, #{menu}
+	 		, #{userName}
+	 		, #{point}
+	 		, #{review}
+	 		
+	 	)
+ 	</insert>
+ 	
+ 	<insert id="insertReviewByObject"
+ 	parameterType="com.ds04011.SpringExample.review.domain.Review">
+ 		Insert into `new_review`
+ 		(
+ 			`storeId`
+	 		, `menu`
+	 		, `userName`
+	 		, `point`
+	 		, `review`
+	 		
+	 	)
+	 	Value
+	 	(
+	 		#{storeId}
+	 		, #{menu}
+	 		, #{userName}
+	 		, #{point}
+	 		, #{review}
+	 	)
+ 	</insert>
  	
  </mapper>
