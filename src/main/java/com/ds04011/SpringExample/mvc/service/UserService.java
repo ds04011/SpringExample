@@ -14,7 +14,12 @@ public class UserService {
 	
 	public User getLastUser() { 
 		return userRepository.selectLastUser();
+	}
+	
+	public int addUser(User user) {
 		
+		int count = userRepository.addUser(user);
+		return count;
 	}
 	
 }

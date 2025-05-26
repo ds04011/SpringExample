@@ -4,6 +4,27 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.ds04011.SpringExample.mvc.repository.UserRepository">
+	
+	<insert id="addUser" useGeneratedKeys="true" keyProperty="id"
+	parameterType ="com.ds04011.SpringExample.mvc.domain.User">
+		INSERT INTO
+ 			`new_user`
+			(
+ 			`name`
+ 			, `yyyymmdd`
+ 			, `email`
+ 			, `introduce`
+ 			)
+ 		VALUE
+ 			(
+ 			#{name}
+ 			, #{yyyymmdd}                
+ 			, #{email}
+ 			, #{introduce}
+ 			)
+	</insert>
+	<!--  위에서 user 객체를 받아와서 그 정보를 insert 해야하는거니까, 엔티티의 변수명으로 ㄱㄱ -->
+
  	<select id="selectLastUser"
  	resultType="com.ds04011.SpringExample.mvc.domain.User">
  		SELECT 
