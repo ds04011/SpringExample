@@ -18,8 +18,8 @@
 			
 		<tbody>
 			
-			<tr th:each="music, iterStat : ${result}">
-				<td th:text="${iterStat.index + 1}">1</td>
+			<tr th:each="music, status : ${result}">
+				<td th:text="${status.count }">1</td>
 				<td th:text="${music}">강남스타일</td>
 			</tr>
 			
