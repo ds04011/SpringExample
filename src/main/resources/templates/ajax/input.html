@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2> 사용자 추가 페이지</h2>
+	
+	
+	<label>이름</label><input type="text" id="name"><br>
+	<label>이메일</label><input type="text" id="email"><br>
+	<label>생년월일</label><input type="text" id="birth"><br>
+	<label>자기소개</label><textarea rows="10" cols="30" id="introduce"></textarea><br>
+	<button type="button" id="addBtn"> 추가</button>
+	
+	<div>
+		result : <span id="resultSpan"></span>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		$("#addBtn").on("click", function(){
+			let name = $("#name").val();
+			let email= $("#email").val();
+			let birth= $("#birth").val();
+			let introduce= $("#introduce").val();
+			
+			
+			
+			//validation
+			
+			if(name == ""){
+				alert("input name");
+				return; // 함수의 기능 수행을 멈춰
+			}
+			
+			if(email==""){
+				alert("input email");
+				return;
+			}
+			if(birth==""){
+				alert("input birthday");
+				return;
+			}
+			if(introduce ==""){
+				alert("input introduce");
+				return;
+			}
+			
+			
+			
+			
+			$.ajax({
+				type:"post"
+				, url:"/newuser/add"
+				, data:{"name":name, "email":email, "birthday":birth, "introduce":introduce}
+				, success:function(response){
+					
+					$("#resultSpan").text(response.result);
+					
+					if(response.result=="success"){
+						alert("success");
+					}
+					else{
+						alert("사용자 추가 실패!");
+					}
+				} 
+				, error:function(){
+					alert("user create failed");
+				}
+				
+			});
+			
+		});
+	
+	</script>
+
+</body>
+</html>
