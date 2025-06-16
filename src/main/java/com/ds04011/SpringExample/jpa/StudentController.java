@@ -1,6 +1,7 @@
 package com.ds04011.SpringExample.jpa;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ds04011.SpringExample.jpa.domain.Student;
+import com.ds04011.SpringExample.jpa.repository.StudentRepository;
 import com.ds04011.SpringExample.jpa.service.StudentService;
 
 @Controller
@@ -18,6 +20,10 @@ public class StudentController {
 	
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
+	private StudentRepository studentRepository;// 임의 추가, 리포지토리만 테스트할꺼라 원랜 ㄴㄴ
+	
 	
 	// 저장 기능 
 	@GetMapping("/create")
@@ -31,17 +37,22 @@ public class StudentController {
 	}
 	
 	
-	// 수정기능
-	
-	public updateStudent(int id, String dreamJob) {
+	@GetMapping("/find")
+	public List<Student> findAll(){
 		
-		// 1. 수정대상 행 조회, 2. 조회 결과 객체 가져오기 3. 객체에 수정사항적용 4. 수정된 객체 저장
+		List<Student> stList = null;
 		
-		
-		
+		stList = studentRepository.findAllByOrderByIdDesc();
 		
 		
+		
+		
+		return stList;
 	}
+	
+	
+	
+	
 	
 	
 	
