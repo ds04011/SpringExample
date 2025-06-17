@@ -34,7 +34,8 @@ public class Student {
 	private String email;
 	private String dreamJob;
 	
-	@CreationTimestamp  		// 생성 시 현재 시간 자동 완성 
+	@CreationTimestamp  		// 생성 시 현재 시간 자동 완성
+//	@Column(name="")
 	private LocalDateTime createdAt;
 	
 	@UpdateTimestamp			// 수정 시 현재 시간 자동 완성 

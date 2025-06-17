@@ -38,13 +38,14 @@ public class StudentController {
 	
 	
 	@GetMapping("/find")
+	@ResponseBody
 	public List<Student> findAll(){
 		
 		List<Student> stList = null;
 		
-		stList = studentRepository.findAllByOrderByIdDesc();
+//		stList = studentRepository.findAllByOrderByIdDesc();
 		
-		
+		stList = studentRepository.findByDreamJobQuery("모델");
 		
 		
 		return stList;
